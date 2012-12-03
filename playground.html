@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>Transform Transitions</title>
+    <script type="text/javascript" src="http://d3js.org/d3.v2.js"></script>
+    <style type="text/css">
+
+body {
+  margin: 0;
+}
+
+rect {
+  stroke: #fff;
+  stroke-width: .05px;
+}
+
+    </style>
+    <body>
+        <svg></svg>
+        <script type="text/javascript">
+            var svg = d3.select("svg")
+
+            svg.selectAll("rect").data(d3.range(81))
+                .enter().append("rect")
+                .attr('height', 10)
+                .attr('width', 10)
+                .attr("x", function(d,i){
+                    return Math.floor(i/9) * 20;
+                 })
+                .attr("y", function(d,i){
+                    return (i * 20) % 180;
+                 })
+                .style("fill", function(d,i) {
+                    return (Math.random()>.5)?"blue":"yellow";
+                })
+
+        </script>
+    </body>
+</html>
