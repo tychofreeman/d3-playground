@@ -23,17 +23,24 @@ rect {
 
             svg.selectAll("rect").data(d3.range(81))
                 .enter().append("rect")
-                .attr('height', 10)
-                .attr('width', 10)
-                .attr("x", function(d,i){
-                    return Math.floor(i/9) * 20;
-                 })
-                .attr("y", function(d,i){
-                    return (i * 20) % 180;
-                 })
                 .style("fill", function(d,i) {
                     return (Math.random()>.5)?"blue":"yellow";
                 })
+
+            
+            svg.selectAll("rect").transition()
+                .duration(2000)
+                .style("fill", function(d,i) {
+                    return (Math.random()>.5)?"blue":"yellow";
+                })
+                .attr("x", function(d,i){
+                    return 6 * Math.floor(d/9)*20
+                })
+                .attr("y", function(d,i){
+                    return 6 * ((i * 20) % 180)
+                })
+                .attr("height", 60)
+                .attr("width", 60)
 
         </script>
     </body>
